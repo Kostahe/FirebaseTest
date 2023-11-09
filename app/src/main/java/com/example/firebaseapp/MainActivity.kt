@@ -22,23 +22,6 @@ class MainActivity : AppCompatActivity() {
 
         val textView: TextView = findViewById(R.id.text_view)
 
-        database = Firebase.database.reference
-        Log.d("Tag", database.toString())
-        database.child("price").setValue("1940$")
 
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val goldPrice = snapshot.value as? String
-
-                textView.text = goldPrice
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-
-        }
-
-        database.child("price").addValueEventListener(postListener)
     }
 }
