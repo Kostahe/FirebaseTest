@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val textView: TextView
+        val textView: TextView = findViewById(R.id.text_view2)
 
         val database = Firebase.firestore
 
@@ -36,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         usersCollection.document("user1").set(user1)
         usersCollection.document("user2").set(user2)
 
+        val documentReference = database.collection("Users").document("user1")
 
+        documentReference.get().addOnSuccessListener { document ->
+            textView.text = document.data?.get("name").toString()
+        }.addOnFailureListener {
+
+        }
     }
 }
