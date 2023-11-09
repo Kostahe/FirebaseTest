@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         val textView: TextView = findViewById(R.id.text_view)
 
+        database = Firebase.database.reference
+
+        // Writing custom objects to firebase
+        val user1 = User("Jack", "123")
+
+        database.child("Users").setValue(user1)
 
     }
 }
